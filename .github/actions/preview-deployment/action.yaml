@@ -16,28 +16,20 @@ runs:
     - name: install dependencies
       shell: bash
       run: |
-        apt update
-        apt install -y yq
-
-    - name: Read app definition
-      id: read-app-definition
-      shell: bash
-      run: |
-        echo "Reading app definition"
-        echo "App definition path: ${{ inputs.app-definition-path }}"
-        APP_DEF=$(cat ${{ inputs.app-definition-path }})
-        echo "APP_DEF=$APP_DEF" >> $GITHUB_ENV
+        sudo apt update
+        sudo apt install -y wget curl 
+        # install yq
+        sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+        sudo chmod +x /usr/bin/yq
 
     - name: Deploy app
       if: github.event_name == 'pull_request' && github.event.action == 'opened'
       shell: bash
       run: |
         echo "pr id is ${{ github.event.pull_request.id }}"
-        echo "content of app definition is $APP_DEF"
 
     - name: read comment
       if: github.event_name == 'issue_comment' && github.event.action == 'created'
       shell: bash
       run: |
         echo "comment is ${{ github.event.comment.body }}"
-        echo "content of app definition is $APP_DEF"

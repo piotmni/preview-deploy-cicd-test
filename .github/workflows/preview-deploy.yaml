@@ -22,4 +22,4 @@ jobs:
       - name: Preview Deployment
         uses: ./.github/actions/preview-deployment
         with:
-          app-definition-path: './github/app-definitions/test.yaml'
+          app-definition-path: './.github/app-definitions/test.yaml'
