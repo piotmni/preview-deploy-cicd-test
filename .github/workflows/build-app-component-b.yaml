@@ -1,0 +1,20 @@
+name: build app b
+
+run-name: "[build] - app b - commit-sha: ${{github.sha}}"
+
+on:
+  push:
+    branches:
+      - main
+      - 'dev-*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: build
+        run: |
+          echo "Building the app component B"
+          echo "Build completed"
