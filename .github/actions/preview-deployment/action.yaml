@@ -21,16 +21,6 @@ runs:
         # install yq
         sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
         sudo chmod +x /usr/bin/yq
-        
-
-    - name: Read app definition
-      id: read-app-definition
-      shell: bash
-      run: |
-        echo "Reading app definition"
-        echo "App definition path: ${{ inputs.app-definition-path }}"
-        APP_DEF=$(cat ${{ inputs.app-definition-path }})
-        echo "APP_DEF=$APP_DEF" >> $GITHUB_ENV
 
     - name: Deploy app
       if: github.event_name == 'pull_request' && github.event.action == 'opened'
