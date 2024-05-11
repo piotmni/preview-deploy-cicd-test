@@ -1,0 +1,24 @@
+name: preview deploy
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    branches:
+      - main
+  issue_comment:
+    types:
+      - created
+      - edited
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: deploy
+        run: |
+          echo "Deploy app"
