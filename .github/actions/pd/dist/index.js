@@ -24958,7 +24958,7 @@ const core = __importStar(__nccwpck_require__(2186));
 async function run() {
     try {
         const appDefPath = core.getInput("app-definition-path");
-        core.debug(`path to app def ${appDefPath}`);
+        core.info(`path to app def ${appDefPath}`);
     }
     catch (error) {
         if (error instanceof Error)
