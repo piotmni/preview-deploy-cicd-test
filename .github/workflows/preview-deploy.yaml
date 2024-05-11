@@ -24,6 +24,6 @@ jobs:
         with:
           app-definition-path: './.github/app-definitions/test.yaml'
       - name: preview deploy ts
-        uses: ./github/actions/pd
+        uses: ./.github/actions/pd
         with:
           app-definition-path: './.github/app-definitions/test.yaml'
