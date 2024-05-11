@@ -1,0 +1,13 @@
+name: 'Preview Deployment'
+description: 'Deploy the app to a preview environment'
+
+inputs:
+  app-definition-path:
+    description: 'The path to the app definition file'
+    required: true
+    default: 'app-definition.yaml'
+
+runs:
+  using: node20
+  main: dist/index.js
+
