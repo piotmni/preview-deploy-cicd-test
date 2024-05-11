@@ -7,7 +7,7 @@ import * as core from "@actions/core";
 export async function run(): Promise<void> {
   try {
     const appDefPath: string = core.getInput("app-definition-path");
-    core.debug(`path to app def ${appDefPath}`);
+    core.info(`path to app def ${appDefPath}`);
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message);
   }
