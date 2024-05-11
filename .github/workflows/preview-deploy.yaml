@@ -19,6 +19,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: deploy
-        run: |
-          echo "Deploy app"
+      - name: Preview Deployment
+        uses: ./.github/actions/preview-deployment
+        with:
+          app-definition-path: './github/app-definitions/test.yaml'

@@ -1,0 +1,7 @@
+components:
+  - app-component-a:
+      start: 'echo app a'
+      destroy: 'echo destroy app a'
+  - app-component-b:
+      start: 'echo app b'
+      destroy: 'echo destroy app b'

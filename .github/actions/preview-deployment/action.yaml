@@ -1,0 +1,43 @@
+name: 'Preview Deployment'
+description: 'Deploy the app to a preview environment'
+
+inputs:
+  app-definition-path:
+    description: 'The path to the app definition file'
+    required: true
+    default: 'app-definition.yaml'
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: install dependencies
+      shell: bash
+      run: |
+        apt update
+        apt install -y yq
+
+    - name: Read app definition
+      id: read-app-definition
+      shell: bash
+      run: |
+        echo "Reading app definition"
+        echo "App definition path: ${{ inputs.app-definition-path }}"
+        APP_DEF=$(cat ${{ inputs.app-definition-path }})
+        echo "APP_DEF=$APP_DEF" >> $GITHUB_ENV
+
+    - name: Deploy app
+      if: github.event_name == 'pull_request' && github.event.action == 'opened'
+      shell: bash
+      run: |
+        echo "pr id is ${{ github.event.pull_request.id }}"
+        echo "content of app definition is $APP_DEF"
+
+    - name: read comment
+      if: github.event_name == 'issue_comment' && github.event.action == 'created'
+      shell: bash
+      run: |
+        echo "comment is ${{ github.event.comment.body }}"
+        echo "content of app definition is $APP_DEF"
