@@ -27,11 +27,9 @@ runs:
       shell: bash
       run: |
         echo "pr id is ${{ github.event.pull_request.id }}"
-        echo "content of app definition is $APP_DEF"
 
     - name: read comment
       if: github.event_name == 'issue_comment' && github.event.action == 'created'
       shell: bash
       run: |
         echo "comment is ${{ github.event.comment.body }}"
-        echo "content of app definition is $APP_DEF"
