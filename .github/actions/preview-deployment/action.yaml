@@ -16,8 +16,8 @@ runs:
     - name: install dependencies
       shell: bash
       run: |
-        apt update
-        apt install -y yq
+        sudo apt update
+        sudo apt install -y yq
 
     - name: Read app definition
       id: read-app-definition
