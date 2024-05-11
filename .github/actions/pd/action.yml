@@ -1,23 +1,12 @@
-name: "The name of your action here"
-description: "Provide a description here"
-author: "Your name or organization here"
-
-# Add your action's branding here. This will appear on the GitHub Marketplace.
-branding:
-  icon: "heart"
-  color: "red"
+name: "PD"
+description: "Preview Deployment"
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: "Your input description here"
+  app-definition-path:
+    description: "The path to the app definition file"
     required: true
-    default: "1000"
-
-# Define your outputs here.
-outputs:
-  time:
-    description: "Your output description here"
+    default: "app-definition.yaml"
 
 runs:
   using: node20
