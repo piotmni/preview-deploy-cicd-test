@@ -15,16 +15,15 @@ runs:
 
     - name: install dependencies
       shell: bash
-      run: ./scripts/install-deps.sh
+      run: ${{ github.action_path }}/scripts/install-deps.sh
 
     - name: Deploy app
       if: github.event_name == 'pull_request' && github.event.action == 'opened'
       shell: bash
-      run: ./scripts/deploy-app.sh
-
+      run: ${{ github.action_path }}/scripts/deploy-app.sh
 
     - name: read comment
       if: github.event_name == 'pull_request_review_comment' && github.event.action == 'created'
       shell: bash
-      run: ./scripts/read-comment.sh
+      run: ${{ github.action_path }}/scripts/read-comment.sh
 
