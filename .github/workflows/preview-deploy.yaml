@@ -8,7 +8,7 @@ on:
       - reopened
     branches:
       - main
-  pull_request_review_comment:
+  issue_comment:
     types:
       - created
       - edited
