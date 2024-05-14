@@ -23,7 +23,7 @@ runs:
       run: ${{ github.action_path }}/scripts/deploy-app.sh
 
     - name: read comment
-      if: github.event_name == 'pull_request_review_comment' && github.event.action == 'created'
+      if: github.event_name == 'issue_comment' && github.event.action == 'created'
       shell: bash
       run: ${{ github.action_path }}/scripts/read-comment.sh
 
